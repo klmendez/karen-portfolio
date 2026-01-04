@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/components/ThemeProvider";
+import ContactBubbles from "@/components/ContactBubbles";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Karen Mendez | Portfolio",
-  description: "Portfolio: Fullstack, APIs, Data y DevOps",
+  title: "Karen Mendez | Portafolio",
+  description: "Portafolio: Fullstack, APIs, Data y DevOps",
 };
 
 export default function RootLayout({
@@ -18,7 +20,11 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground">
         <ThemeProvider>
           <Navbar />
-          {children}
+          <div className="relative">
+            {children}
+            <ContactBubbles />
+          </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

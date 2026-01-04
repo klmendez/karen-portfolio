@@ -2,18 +2,98 @@
 
 :root {
   color-scheme: light;
+  --hero-bg: linear-gradient(120deg, #fef5ef 0%, #ecf3ff 50%, #f5fbef 100%);
+  --btn-primary-bg: #111827;
+  --btn-primary-text: #f9fafb;
+  --btn-primary-hover: #0f172a;
+  --btn-outline-border: rgba(17, 24, 39, 0.25);
+  --btn-outline-text: #111827;
+  --btn-outline-hover: rgba(17, 24, 39, 0.08);
 }
 
 .dark {
   color-scheme: dark;
+  --hero-bg: linear-gradient(120deg, #030511 0%, #08122a 50%, #111c3a 100%);
+  --btn-primary-bg: #f9fafb;
+  --btn-primary-text: #0f172a;
+  --btn-primary-hover: #e5e7eb;
+  --btn-outline-border: rgba(249, 250, 251, 0.3);
+  --btn-outline-text: #f9fafb;
+  --btn-outline-hover: rgba(249, 250, 251, 0.1);
 }
 
-html,
-body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
     "Segoe UI Emoji";
+}
+
+.hero-surface {
+  background: var(--hero-bg);
+  color: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: var(--btn-primary-hover);
+}
+
+.btn-outline {
+  border-color: var(--btn-outline-border);
+  color: var(--btn-outline-text);
+}
+
+.btn-outline:hover {
+  background-color: var(--btn-outline-hover);
+  color: var(--btn-primary-text);
+}
+
+.btn-text {
+  color: var(--btn-outline-text);
+  padding: 0;
+  border: none;
+}
+
+.btn-text:hover {
+  color: var(--btn-primary-bg);
+}
+
+.btn-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
