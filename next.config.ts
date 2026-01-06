@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const isVercel = process.env.VERCEL === "1" || !!process.env.VERCEL_ENV;
-const isGithubPages = !isVercel && process.env.DEPLOY_TARGET === "github";
+const DEPLOY_TARGET = process.env.DEPLOY_TARGET; // "github" | "vercel" | undefined
+const isGithubPages = DEPLOY_TARGET === "github";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
