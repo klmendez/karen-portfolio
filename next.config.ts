@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
-const isGithubPages = process.env.DEPLOY_TARGET === "github";
+const isVercel = process.env.VERCEL === "1" || !!process.env.VERCEL_ENV;
+const isGithubPages = !isVercel && process.env.DEPLOY_TARGET === "github";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
-  // Solo necesario para GitHub Pages (sitio estático)
   ...(isGithubPages
     ? {
         output: "export",
