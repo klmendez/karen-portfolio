@@ -17,14 +17,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Show commit info
         run: |
-          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "Commit SHA:"
           git rev-parse HEAD
+          echo "Last commit:"
           git log -1 --oneline
 
       - name: Detect package manager
@@ -45,38 +47,36 @@ jobs:
             exit 1
           fi
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # 🚫 Desactivamos cache de Next para descartar builds viejos
-      - name: Clear Next caches
+      - name: Clean previous builds
         run: |
           rm -rf .next out
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      # ✅ Forzamos build sin Turbopack
-      - name: Build with Next.js (GitHub Pages)
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build --no-turbo
+      - name: Build Next.js for GitHub Pages
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build --turbo=false
         env:
           DEPLOY_TARGET: github
 
-      # ✅ Verificamos que el archivo que se compiló NO tenga next/router
-      - name: Sanity check - HeroSection content
+      - name: Verify build output
         run: |
-          echo "----- HeroSection.tsx first 20 lines -----"
-          sed -n '1,25p' src/sections/home/HeroSection.tsx
-          echo "----- grep next/router (should be empty) -----"
-          grep -R "next/router" -n src || true
+          echo "Checking build output..."
+          ls -la out || (echo "❌ out/ folder not found" && exit 1)
+          ls -la out/Fotos || (echo "❌ out/Fotos not found" && exit 1)
+          test -f out/Fotos/1.jpeg || (echo "❌ out/Fotos/1.jpeg not found" && exit 1)
+          test -f out/cv.pdf || (echo "❌ out/cv.pdf not found" && exit 1)
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
@@ -87,6 +87,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
