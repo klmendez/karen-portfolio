@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { FadeIn } from "@/components/Motion";
 import type { Profile } from "@/types/content";
@@ -17,6 +18,11 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 export function HeroSection({ profile }: HeroSectionProps) {
+  const { basePath } = useRouter();
+
+  const portraitSrc = `${basePath}/Fotos/1.jpeg`;
+  const cvHref = `${basePath}/cv.pdf`;
+
   return (
     <FadeIn>
       <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden py-28">
@@ -57,11 +63,14 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   Ver proyectos
                 </Link>
 
-                <a href="/cv.pdf" download className="btn btn-outline">
+                <a href={cvHref} download className="btn btn-outline">
                   Descargar CV
                 </a>
 
-                <a href={`mailto:${profile.contact.emails[0]}`} className="btn btn-outline">
+                <a
+                  href={`mailto:${profile.contact.emails[0]}`}
+                  className="btn btn-outline"
+                >
                   Contacto
                 </a>
 
@@ -87,7 +96,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   aria-hidden="true"
                 />
                 <Image
-                  src="/Fotos/1.jpeg"
+                  src={portraitSrc}
                   alt="Retrato de Karen Mendez"
                   fill
                   sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 220px"
