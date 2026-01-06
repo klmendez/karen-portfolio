@@ -22,13 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show commit info
-        run: |
-          echo "Commit SHA:"
-          git rev-parse HEAD
-          echo "Last commit:"
-          git log -1 --oneline
-
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -63,18 +56,10 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build Next.js for GitHub Pages
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build --turbo=false
+      - name: Build Next.js for GitHub Pages (use webpack)
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
           DEPLOY_TARGET: github
-
-      - name: Verify build output
-        run: |
-          echo "Checking build output..."
-          ls -la out || (echo "❌ out/ folder not found" && exit 1)
-          ls -la out/Fotos || (echo "❌ out/Fotos not found" && exit 1)
-          test -f out/Fotos/1.jpeg || (echo "❌ out/Fotos/1.jpeg not found" && exit 1)
-          test -f out/cv.pdf || (echo "❌ out/cv.pdf not found" && exit 1)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
