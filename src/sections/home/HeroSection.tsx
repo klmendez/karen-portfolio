@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { FadeIn } from "@/components/Motion";
@@ -57,14 +56,12 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   Ver proyectos
                 </Link>
 
-                <a href="/cv.pdf" download className="btn btn-outline">
+                {/* 👇 relativo (sin /) para que funcione en GitHub Pages y Vercel */}
+                <a href="cv.pdf" download className="btn btn-outline">
                   Descargar CV
                 </a>
 
-                <a
-                  href={`mailto:${profile.contact.emails[0]}`}
-                  className="btn btn-outline"
-                >
+                <a href={`mailto:${profile.contact.emails[0]}`} className="btn btn-outline">
                   Contacto
                 </a>
 
@@ -89,14 +86,14 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-foreground/20 backdrop-blur-[1px] transition duration-700 group-hover:ring-foreground/40"
                   aria-hidden="true"
                 />
-                <Image
-                  src="/Fotos/1.jpeg"
+
+                {/* 👇 img relativo (sin /) para que se resuelva bien en /karen-portfolio/ */}
+                <img
+                  src="Fotos/1.jpeg"
                   alt="Retrato de Karen Mendez"
-                  fill
-                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 220px"
-                  priority
-                  className="rounded-full object-cover object-[center_15%] scale-140 transition-transform duration-[900ms] group-hover:scale-[1.48]"
+                  className="absolute inset-0 h-full w-full rounded-full object-cover object-[center_15%] scale-140 transition-transform duration-[900ms] group-hover:scale-[1.48]"
                 />
+
                 <div
                   className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_transparent_65%)]"
                   aria-hidden="true"
