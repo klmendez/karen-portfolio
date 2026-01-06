@@ -57,7 +57,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   Ver proyectos
                 </Link>
 
-                <a href="/cv.pdf" download className="btn btn-outline">
+<a href="/karen-portfolio/cv.pdf" download className="btn btn-outline">
                   Descargar CV
                 </a>
 
@@ -87,7 +87,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   aria-hidden="true"
                 />
                 <Image
-                  src="/Fotos/1.jpeg"
+  src="/karen-portfolio/Fotos/1.jpeg"
                   alt="Retrato de Karen Mendez"
                   fill
                   sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 220px"
