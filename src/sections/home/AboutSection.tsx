@@ -16,9 +16,13 @@ const highlightCards = [
     ],
     footer: "Entrega funcional",
     accent: {
-      overlay: "from-cyan-400/24 via-sky-400/12 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_68%)]",
-      marker: "bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-300",
+      surface: "bg-sky-50/90 dark:bg-sky-950/55",
+      overlay:
+        "from-cyan-400/24 via-sky-400/12 to-transparent dark:from-cyan-500/22 dark:via-sky-500/14 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_68%)] dark:bg-[radial-gradient(circle_at_center,_rgba(14,165,233,0.45),_transparent_66%)]",
+      marker:
+        "bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-300 dark:from-cyan-400 dark:via-sky-500 dark:to-teal-400",
     },
   },
   {
@@ -33,9 +37,13 @@ const highlightCards = [
     ],
     footer: "Procesos limpios",
     accent: {
-      overlay: "from-violet-400/22 via-fuchsia-400/12 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(167,139,250,0.34),_transparent_70%)]",
-      marker: "bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-300",
+      surface: "bg-fuchsia-50/85 dark:bg-violet-950/55",
+      overlay:
+        "from-violet-400/22 via-fuchsia-400/12 to-transparent dark:from-violet-500/24 dark:via-fuchsia-500/16 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(167,139,250,0.34),_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.45),_transparent_66%)]",
+      marker:
+        "bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-300 dark:from-violet-400 dark:via-fuchsia-500 dark:to-indigo-400",
     },
   },
   {
@@ -50,9 +58,13 @@ const highlightCards = [
     ],
     footer: "Impacto medible",
     accent: {
-      overlay: "from-amber-400/24 via-orange-400/12 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(251,191,36,0.36),_transparent_70%)]",
-      marker: "bg-gradient-to-r from-amber-400 via-orange-400 to-lime-300",
+      surface: "bg-amber-50/90 dark:bg-amber-950/55",
+      overlay:
+        "from-amber-400/24 via-orange-400/12 to-transparent dark:from-amber-500/24 dark:via-orange-500/16 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(251,191,36,0.36),_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(202,138,4,0.45),_transparent_64%)]",
+      marker:
+        "bg-gradient-to-r from-amber-400 via-orange-400 to-lime-300 dark:from-amber-400 dark:via-orange-500 dark:to-lime-300",
     },
   },
 ];
@@ -128,13 +140,13 @@ export function AboutSection({ profile }: AboutSectionProps) {
             <div className="grid gap-6">
               {highlightCards.map((card) => (
                 <FadeIn key={card.title}>
-                  <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white/80 p-7 text-slate-900 shadow-[0_26px_68px_rgba(15,23,42,0.12)] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:shadow-[0_40px_110px_rgba(15,23,42,0.22)] dark:bg-slate-950/55 dark:text-white dark:shadow-[0_36px_90px_rgba(2,6,23,0.55)]">
+                  <div className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-900/5 p-7 text-slate-900 shadow-[0_26px_68px_rgba(15,23,42,0.12)] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:shadow-[0_40px_110px_rgba(15,23,42,0.22)] dark:border-white/12 dark:text-white dark:shadow-[0_40px_120px_rgba(2,6,23,0.6)] ${card.accent.surface}`}>
                     <div
-                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${card.accent.overlay} opacity-70 transition duration-500 group-hover:opacity-95`}
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${card.accent.overlay} opacity-70 transition duration-500 group-hover:opacity-95 dark:opacity-40 dark:mix-blend-screen`}
                       aria-hidden="true"
                     />
                     <div
-                      className={`pointer-events-none absolute -left-16 top-1/2 h-44 w-44 -translate-y-1/2 transform-gpu blur-3xl opacity-0 transition duration-500 group-hover:opacity-70 ${card.accent.beam}`}
+                      className={`pointer-events-none absolute -left-16 top-1/2 h-44 w-44 -translate-y-1/2 transform-gpu blur-3xl opacity-0 transition duration-500 group-hover:opacity-70 ${card.accent.beam} dark:opacity-35`}
                       aria-hidden="true"
                     />
 
@@ -144,21 +156,21 @@ export function AboutSection({ profile }: AboutSectionProps) {
                           <span className={`h-1.5 w-12 rounded-full ${card.accent.marker}`} aria-hidden="true" />
                           {card.tag}
                         </span>
-                        <h3 className="text-xl font-semibold tracking-tight text-inherit dark:text-white">{card.title}</h3>
-                        <p className="text-sm leading-relaxed text-slate-800/80 dark:text-white/85">{card.summary}</p>
+                        <h3 className="text-xl font-semibold tracking-tight text-inherit dark:text-white/95">{card.title}</h3>
+                        <p className="text-sm leading-relaxed text-slate-800/80 dark:text-white/90">{card.summary}</p>
 
-                        <ul className="space-y-3 text-sm text-slate-800/75 dark:text-white/85">
+                        <ul className="space-y-3 text-sm text-slate-800/75 dark:text-white/88">
                           {card.points.map((point) => (
                             <li key={point} className="flex gap-3">
-                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900/70 dark:bg-white/80" aria-hidden="true" />
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-900/70 dark:bg-white/75" aria-hidden="true" />
                               <span className="leading-relaxed">{point}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.38em] text-slate-800/55 dark:text-white/85">
-                        <span className="h-px flex-1 bg-gradient-to-r from-slate-900/15 via-slate-900/35 to-transparent dark:from-white/18 dark:via-white/36" aria-hidden="true" />
+                      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.38em] text-slate-800/55 dark:text-white/80">
+                        <span className="h-px flex-1 bg-gradient-to-r from-slate-900/15 via-slate-900/35 to-transparent dark:from-white/22 dark:via-white/38" aria-hidden="true" />
                         {card.footer}
                       </div>
                     </div>

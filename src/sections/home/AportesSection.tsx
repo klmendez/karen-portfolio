@@ -8,9 +8,12 @@ const aportes = [
       "Interfaces fluidas, accesibles y con narrativa visual usando React, Tailwind y animaciones con intención.",
     tag: "Frontend Craft",
     accent: {
-      overlay: "from-rose-400/22 via-amber-400/10 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(244,114,182,0.40),_transparent_70%)]",
-      marker: "bg-gradient-to-r from-rose-400 via-amber-400 to-lime-300",
+      overlay:
+        "from-rose-400/22 via-amber-400/10 to-transparent dark:from-rose-500/24 dark:via-amber-500/16 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(244,114,182,0.40),_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(219,39,119,0.45),_transparent_68%)]",
+      marker:
+        "bg-gradient-to-r from-rose-400 via-amber-400 to-lime-300 dark:from-rose-400 dark:via-amber-500 dark:to-lime-300",
     },
   },
   {
@@ -19,9 +22,12 @@ const aportes = [
       "Arquitecturas modulares, automatización de flujos y servicios escalables con enfoque en calidad y documentación.",
     tag: "Software Foundations",
     accent: {
-      overlay: "from-indigo-400/22 via-blue-400/12 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(129,140,248,0.36),_transparent_72%)]",
-      marker: "bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-300",
+      overlay:
+        "from-indigo-400/22 via-blue-400/12 to-transparent dark:from-indigo-500/24 dark:via-blue-500/16 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(129,140,248,0.36),_transparent_72%)] dark:bg-[radial-gradient(circle_at_center,_rgba(99,102,241,0.45),_transparent_68%)]",
+      marker:
+        "bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-300 dark:from-indigo-400 dark:via-blue-500 dark:to-cyan-300",
     },
   },
   {
@@ -30,9 +36,12 @@ const aportes = [
       "Modelos de NLP, visión y analítica avanzada integrados en productos reales con métricas accionables.",
     tag: "AI Delivery",
     accent: {
-      overlay: "from-emerald-400/24 via-teal-400/12 to-transparent",
-      beam: "bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.38),_transparent_68%)]",
-      marker: "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-200",
+      overlay:
+        "from-emerald-400/24 via-teal-400/12 to-transparent dark:from-emerald-500/24 dark:via-teal-500/16 dark:to-transparent",
+      beam:
+        "bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.38),_transparent_68%)] dark:bg-[radial-gradient(circle_at_center,_rgba(5,150,105,0.45),_transparent_64%)]",
+      marker:
+        "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-200 dark:from-emerald-400 dark:via-teal-500 dark:to-cyan-200",
     },
   },
 ];

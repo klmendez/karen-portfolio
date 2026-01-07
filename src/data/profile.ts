@@ -1,6 +1,6 @@
 export const profile = {
   name: "Karen Liseth Mendez Quilindo",
-  headline: "Estudiante de Contaduría Pública | Ingeniera en Informática (materias terminadas, trabajo de grado en curso)",
+  headline: "Ingeniera en Informática (materias terminadas, trabajo de grado en curso) | Formación complementaria en Contaduría Pública",
   summary:
     "Mi perfil hasta el momento ha sido más académico que laboral, ya que he consolidado experiencia en proyectos e investigación, con participación como ponente en eventos, con capacidad para estructurar, comunicar y sustentar resultados.",
   location: "Popayán, Cauca",
